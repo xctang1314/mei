@@ -1,0 +1,89 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@page import="net.sf.json.JSONArray"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert title here</title>
+
+<script src="../mei/d3/d3.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../mei/d3/d3.js" type="text/javascript" charset="utf-8"></script>
+<script src="../mei/js/DataExtraction.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body>
+<div  align="left">
+<form id="DataExtraction" action="/mei/LogData_ExtractServlet" method="post" target="_top">
+从第几行开始读：
+<input id="row" name="row" type="text"  size="20" maxlength="20" />
+<br>
+<br>
+从第几列开始取数据：
+<input name="col1" type="text"  size="20" maxlength="20" />
+<br>
+<br>
+数据取到第几列：
+<input name="col2" type="text"  size="20" maxlength="20" />
+<br>
+<br>
+每次读几行数据：
+<input name="num1" type="text"  size="20" maxlength="20" />
+<br>
+<br>
+每隔几行读数据：
+<input name="num2" type="text"  size="20" maxlength="20" />
+<br>
+<br>
+<input type="submit" name="Submit" value="提交"/>
+</form>
+</div>
+
+<%-- <%
+	JSONArray s=(JSONArray)request.getAttribute("array");
+	out.print(s);
+%>
+ --%>
+ <div style="height: 660px; width: 90%;overflow:scroll;">
+<div id="img">
+</div> 
+</div> 
+
+<%
+	Object o=request.getAttribute("array");
+	out.append((String)o);
+	%>
+</body>
+
+</html>
+
+<script type="text/javascript">
+	var  a=${array};
+	
+	
+	
+	/* for(var i=0;i<a.length;i++){
+		var data[];
+		for(var j=0;j<a[i].length;j++){
+			data[j]=parseInt(a[i][j]);
+		}
+		showImg(data);
+	} */
+	var i=eval('[' + a.join(',') + ']') ;
+	//alert(Array.isArray(i));
+	//alert(i);
+	var kk=[];   
+	for (var j=0;j<i.length;j++)
+	{
+		kk[j]=parseInt(i[j]);
+	}
+	showImg(kk);
+	
+		//alert(Array.isArray(i));
+	//alert(i);
+	
+	
+	
+
+
+</script>

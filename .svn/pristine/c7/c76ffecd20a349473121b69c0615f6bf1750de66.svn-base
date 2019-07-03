@@ -1,0 +1,218 @@
+package com.cn.servlet;
+
+public class test {
+	package servlet;
+
+	import java.io.IOException;
+	import java.io.PrintWriter;
+
+	import javax.servlet.ServletException;
+	import javax.servlet.http.HttpServlet;
+	import javax.servlet.http.HttpServletRequest;
+	import javax.servlet.http.HttpServletResponse;
+
+	import dao.ItemsDAO;
+	import entity.Cart;
+	import entity.Items;
+
+	public class CartServlet extends HttpServlet {
+
+		private String action ; //表示购物车的动作 ,add,show,delete
+		//商品业务逻辑类的对象
+		private ItemsDAO idao = new ItemsDAO();
+		
+		
+		/**
+		 * Constructor of the object.
+		 */
+		public CartServlet() {
+			super();
+		}
+
+		/**
+		 * Destruction of the servlet. <br>
+		 */
+		public void destroy() {
+			super.destroy(); // Just puts "destroy" string in log
+			// Put your code here
+		}
+
+		/**
+		 * The doGet method of the servlet. <br>
+		 *
+		 * This method is called when a form has its tag value method equals to get.
+		 * 
+		 * @param request the request send by the client to the server
+		 * @param response the response send by the server to the client
+		 * @throws ServletException if an error occurred
+		 * @throws IOException if an error occurred
+		 */
+		public void doGet(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+	        doPost(request,response);
+		}
+
+		/**
+		 * The doPost method of the servlet. <br>
+		 *
+		 * This method is called when a form has its tag value method equals to post.
+		 * 
+		 * @param request the request send by the client to the server
+		 * @param response the response send by the server to the client
+		 * @throws ServletException if an error occurred
+		 * @throws IOException if an error occurred
+		 */
+		public void doPost(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			if(request.getParameter("action")!=null)
+			{
+				this.action = request.getParameter("action");
+				if(action.equals("add")) //如果是添加商品进购物车
+				{
+					if(addToCart(request,response))
+					{
+						request.getRequestDispatcher("/success.jsp").forward(request, response);
+					}
+					else
+					{
+						request.getRequestDispatcher("/failure.jsp").forward(request, response);
+					}
+				}
+				if(action.equals("show"))//如果是显示购物车
+				{
+					request.getRequestDispatcher("/cart.jsp").forward(request, response);
+				}
+				if(action.equals("delete")) //如果是执行删除购物车中的商品
+				{
+					if(deleteFromCart(request,response))
+					{
+						request.getRequestDispatcher("/cart.jsp").forward(request, response);
+					}
+					else
+					{
+						request.getRequestDispatcher("/cart.jsp").forward(request, response);
+					}
+				}
+			}
+			
+		}
+
+		//添加商品进购物车的方法
+		private boolean addToCart(HttpServletRequest request, HttpServletResponse response)
+		{
+			String id = request.getParameter("id");
+			String number = request.getParameter("num");
+			Items item = idao.getItemsById(Integer.parseInt(id));
+			
+			//是否是第一次给购物车添加商品,需要给session中创建一个新的购物车对象
+			if(request.getSession().getAttribute("cart")==null)
+			{
+				Cart cart = new Cart();
+				request.getSession().setAttribute("cart",cart);
+			}
+			Cart cart = (Cart)request.getSession().getAttribute("cart");
+			if(cart.addGoodsInCart(item, Integer.parseInt(number)))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+			
+		}
+		
+		//从购物车中删除商品
+		private boolean deleteFromCart(HttpServletRequest request, HttpServletResponse response)
+		{
+			String id = request.getParameter("id");
+			Cart cart = (Cart)request.getSession().getAttribute("cart");
+		    Items item = idao.getItemsById(Integer.parseInt(id));
+		    if(cart.removeGoodsFromCart(item))
+		    {
+		    	return true;
+		    }
+		    else
+		    {
+		    	return false;
+		    }
+		}
+		
+		/**
+		 * Initialization of the servlet. <br>
+		 *
+		 * @throws ServletException if an error occurs
+		 */
+		public void init() throws ServletException {
+			// Put your code here
+		}
+
+	}
+	package servlet;
+
+	import java.io.IOException;
+
+	import javax.servlet.ServletException;
+	import javax.servlet.annotation.WebServlet;
+	import javax.servlet.http.HttpServlet;
+	import javax.servlet.http.HttpServletRequest;
+	import javax.servlet.http.HttpServletResponse;
+	import javax.servlet.http.HttpSession;
+
+	import dao.UsersDao;
+
+	/**
+	 * Servlet implementation class LoginCheck
+	 */
+	//@WebServlet("/LoginCheck")
+	public class LoginCheck extends HttpServlet {
+		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			// TODO Auto-generated method stub
+			doPost(request,response);
+		}
+
+		
+		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			// TODO Auto-generated method stub
+			//设置编码
+					request.setCharacterEncoding("UTF-8");
+					response.setCharacterEncoding("UTF-8");
+//					获取从form表单中传送过来的数据，用户名，密码，验证码
+					String username = request.getParameter("userName").trim();
+					String password = request.getParameter("passWord").trim();
+					System.out.println(username+"++"+password);
+					String randInput = request.getParameter("checkNum").toString();
+					System.out.println(randInput+"++");
+					HttpSession session  = request.getSession();
+					String randCode = session.getAttribute("randomCode").toString();
+					UsersDao dao=new UsersDao();
+					boolean check = dao.checkUser(username, password);
+					System.out.println(check+"++");
+					request.setAttribute("check", check);
+					if(randCode.equals(randInput) && check)
+					{
+						request.getSession(true).setAttribute("username", username);
+						request.getRequestDispatcher("home.jsp").forward(request,response);
+					}
+					else{
+						//验证码不匹配
+						if(!randCode.equals(randInput))
+						{
+						request.setAttribute("checkcode", false);
+						System.out.println(randCode.equals(randInput));
+						request.getRequestDispatcher("login.jsp").forward(request, response);
+						}
+						else{
+							//用户名或者密码错误
+							request.getRequestDispatcher("login.jsp").forward(request, response);	
+						}
+					}
+		}
+
+	}
+
+
+}

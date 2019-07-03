@@ -1,0 +1,93 @@
+body{
+	text-align: center;
+}
+#headlogo{
+	text-align: left;
+}
+#head{
+	height: 50px;
+}
+#bg{
+	height: 600px;
+	background: url(../image/login-b.jpg) no-repeat center center;
+}
+
+
+#login{
+	position: absolute;
+	height: 320px;
+	width: 480px;
+	right: 10px;
+	top: 200px;
+	background-color: white; 
+}
+
+#formhead{
+	height: 70px;
+	position: relative;
+}
+#formhead1{
+	position: absolute;
+	left: 0;
+	width: 50%;
+	height: 50px;
+	text-align:right;
+	cursor: pointer;
+	background-color: green;
+}
+#formhead2{
+	position: absolute;
+	left: 50%;
+	width: 50%;
+	height: 50px;
+	text-align: left;
+	cursor: pointer;
+	background-color: white;
+}
+#form{
+	height: 150px
+}
+
+#formbutton{
+	height: 80px;
+	position: relative;
+}
+#formbutton1{
+	height: 40px;
+	left: 32%;
+	width:12%;
+	position: absolute;
+	cursor: pointer;
+}
+#formbutton2{
+	height: 40px;
+	left: 44%;
+	width:12%;
+	position: absolute;
+	cursor: pointer;
+}
+#formbutton3{
+	height: 40px;
+	width:12%;
+	left: 56%;
+	position: absolute;
+	cursor: pointer;
+}
+#formbutton4{
+	height: 40px;
+	top:50px;
+	left:0;
+	width:50%;
+	position: absolute;
+	text-align:left;
+	cursor: pointer;
+}
+#formbutton5{
+	height: 40px;
+	top:50px;
+	left:50%;
+	width:50%;
+	position: absolute;
+	text-align:right;
+	cursor: pointer;
+}

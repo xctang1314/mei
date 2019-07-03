@@ -1,0 +1,5 @@
+#img{
+	text-align:left;
+	/* overflow: scroll; */
+	text-align:center
+}

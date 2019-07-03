@@ -1,0 +1,57 @@
+#nor{
+	height: 90px;
+	position:relative;
+	background-color: #c1ecc1
+}
+#logo{
+	position:absolute;
+	left: 0;
+}
+#bt{
+	position:absolute;
+	left:200px;
+	font-size: 25pt;
+	height: 45px;
+	width: 280px;
+}
+#mk1{
+	left:280px;
+	position:absolute;
+	bottom:0;
+	height: 45px;
+	width: 100px;
+}
+#mk2{
+	left:360px;
+	font-size: 22pt;
+	position:absolute;
+	bottom:0
+}
+#mk3{
+	left:440px;
+	font-size: 22pt;
+	position:absolute;
+	bottom:0
+}
+#mk4{
+	right:0;
+	font-size: 22pt;
+	position:absolute;
+	bottom:0
+}
+#mk5{
+	right:80px;
+	font-size: 22pt;
+	position:absolute;
+	bottom:0
+}
+#mk1,#mk2,#mk3,#mk4,#mk5{
+	cursor: pointer
+}
+/* #home{
+	display:flex;
+    align-items:center; 
+    justify-content:center;
+    height: 45px;
+    width: 45px
+} */
