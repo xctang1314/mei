@@ -9,18 +9,22 @@
 	href="../jquery-easyui-1.7.0/themes/default/easyui.css" />
 <link rel="stylesheet" type="text/css"
 	href="../jquery-easyui-1.7.0/themes/icon.css" />
-<link rel="stylesheet" type="text/css" href="../css/index.css" />
+<link rel="stylesheet" type="text/css" href="../css/Trend.css" />
 <script src="../jquery-easyui-1.7.0/jquery.min.js" type="text/javascript"
 	charset="utf-8"></script>
 <script src="../jquery-easyui-1.7.0/jquery.easyui.min.js"
 	type="text/javascript" charset="utf-8"></script>
+<script src="../js/Trend.js"
+	type="text/javascript" charset="utf-8"></script>
 <title>Insert title here</title>
 </head>
 <body>
-aaaaaaa
-bbbbbb
-cccccc
-ddddddd
-
+<div id="div1" style="width: 100px;height: 30px;background-color: red">数据分析工具</div>
+<div id="div2" style="width: 600px;height: 100px;background-color: green">
+<form id="upload" name="form"  method="post"> 
+ 	<input type="file" name="file" id="pic"/> 
+ 	<input type="button" value="提交" onclick="upload();"/> 
+</form> 
+</div>
 </body>
 </html>
