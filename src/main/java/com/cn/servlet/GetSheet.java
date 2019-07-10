@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONObject;
+
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -168,7 +170,12 @@ public class GetSheet extends HttpServlet {
 							for (int k = 0; k < cellNum; k++) {
 								System.out.println(L[k].toString());
 							}
-
+							
+							int a[]= {1,2,3,4,5,6,7,9,0,5,6,7,8};
+							/*JSONObject json = JSONObject.fromObject(a);
+							System.out.println(json);*/
+							response.getWriter().print(a.toString());
+							
 						} else {
 							System.out.println("找不到指定的文件");
 						}
@@ -185,5 +192,8 @@ public class GetSheet extends HttpServlet {
 			e.printStackTrace();
 		}
 
+		
+		
 	}
+	
 }
