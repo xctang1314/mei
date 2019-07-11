@@ -3,13 +3,13 @@ function upload() {
     formData = new FormData(form); 
     
     var strFileName=form.file.value;
-    alert(strFileName);
+   // alert(strFileName);
     
     //var suffix = strFileName.lastIndexOf(".");
     
     var fileext=strFileName.substring(strFileName.lastIndexOf("."),strFileName.length)
    fileext= fileext.toLowerCase();
-    alert(fileext);
+    //alert(fileext);
     if (".xls" == fileext || ".xlsx" == fileext ) {
     	$.ajax({ 
     		   url:"http://localhost:8080/mei/GetSheet", 
@@ -26,7 +26,7 @@ function upload() {
     					   c[b]=req[0][b];
     				   }
     				   
-    				   console.log(c);
+    				   //console.log(c);
     				   showImg(c);
                   
  
@@ -46,8 +46,8 @@ function upload() {
 
 function showImg(dataset){    //柱状图
 
-	var width = 1500;
-	var height = 400;
+	var width = 1000;
+	var height = 250;
 
 	//鍦� body 閲屾坊鍔犱竴涓� SVG 鐢诲竷   
 	var svg = d3.select("#img")
@@ -127,7 +127,7 @@ function showImg(dataset){    //柱状图
 	             return d;
 	         });*/
 	 
-	//娣诲姞x杞�
+	//x轴
 	 svg.append("g")
 	   .attr("class","axis")
 	   .attr("transform","translate(" + padding.left + "," + (height - padding.bottom) + ")")

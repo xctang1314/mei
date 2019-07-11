@@ -134,7 +134,8 @@ public class GetSheet extends HttpServlet {
 
 							// 开始解析
 							Sheet sheet = wb.getSheetAt(0); // 读取sheet 0
-							int firstRowIndex = sheet.getFirstRowNum() + 1; // 第一行是列名，所以不读
+							//int firstRowIndex = sheet.getFirstRowNum() + 1; // 第一行是列名，所以不读
+							int firstRowIndex = sheet.getFirstRowNum();
 							int lastRowIndex = sheet.getLastRowNum();
 							// 第一行及最后一行
 							// System.out.println("firstRowIndex: "+firstRowIndex);
@@ -169,18 +170,31 @@ public class GetSheet extends HttpServlet {
 								}
 
 							}
+							//模型值数组
+							float mxz[]=new float[cellNum];
 							for (int k = 0; k < cellNum; k++) {  //L[k]   linkedlist
-								System.out.println(L[k].toString());
-								Iterator<String> it=L[k].iterator();
-								while(it.hasNext()){
-									int a=Integer.parseInt(it.next()); 
-								}
+								//System.out.println(L[k].toString());
 								
+								String[] numbers = new String[L[k].size()];
+						        String a[]=L[k].toArray(numbers);
+								
+						        Float aa[]=new Float[a.length];
+						        for(int b=0;b<a.length;b++){
+						        	aa[b]=Float.parseFloat(a[b]);
+						        }
+						        
+						        //求模型值
+						        
+						        
+						        mxz[k]=getMXZ(aa);
+						        
+						        
 							}
 							
-							int a[]= {1,2,3,4,5,6,7,9,0,5,6,7,8};
+							
+							//int a[]= {1,2,3,4,5,6,7,9,0,5,6,7,8};
 							JSONArray json= new JSONArray();
-							json.add(a);
+							json.add(mxz);
 							//JSONObject json = JSONObject.fromObject(a);
 							System.out.println(json);
 							//System.out.println("aaaa");
@@ -205,5 +219,12 @@ public class GetSheet extends HttpServlet {
 		
 		
 	}
-	
+	public static float getMXZ(Float[] a){
+		//最小二乘法
+		float sum=0;
+		for(int i=0;i<a.length;i++)
+			sum+=a[i];
+		
+		return sum/a.length;
+	}
 }

@@ -102,11 +102,11 @@
 		</div>
 		<!--中间主要区域-->
 		 <div data-options="region:'center',split:true,fit:true">
-			<div id="mainTabs" class="easyui-tabs" data-options="fit:false" style='width:88%;height:78%'>
+			<div id="mainTabs" class="easyui-tabs" data-options="fit:true">
 			</div>
 		</div> 
 		<!--右侧主要区域-->
-		<!-- <div region="east" title="右侧边栏" split="true" style="width: 200px;">
+		<!-- <div region="east" title="右侧边栏" split="true" style="width: 0px;">
 		</div> -->
 		<!--页脚-->
 		<div region="south" style="text-align: center; height: 50px; overflow:hidden">

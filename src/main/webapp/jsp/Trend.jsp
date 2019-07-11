@@ -33,7 +33,7 @@
 
 </div>
 
-sssssss
+
 <div id="img"></div>
 
 

@@ -23,8 +23,8 @@ window.onload=function(){
 
 function showImg(dataset){
 
-	var width = 1500;
-	var height = 400;
+	var width = 1000;
+	var height = 250;
 
 	//在 body 里添加一个 SVG 画布   
 	var svg = d3.select("#img")
@@ -119,8 +119,8 @@ function showImg(dataset){
 
 function showImg1(dataset){
 
-	var width = 1500;
-	var height = 400;
+	var width = 1000;
+	var height = 250;
 
 	//在 body 里添加一个 SVG 画布   
 	var svg = d3.select("#img")

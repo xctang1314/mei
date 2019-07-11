@@ -1,3 +1,6 @@
+ html, body{
+   	overflow:scroll;
+}
 #nor{
 	height: 90px;
 	position:relative;

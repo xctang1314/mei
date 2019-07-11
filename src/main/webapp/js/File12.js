@@ -15,7 +15,7 @@ window.onload=function(){
 function showImg(dataset,i){
 
 	var width = 1500*i;
-	var height = 400;
+	var height = 250;
 
 	//在 body 里添加一个 SVG 画布   
 	var svg = d3.select("#img")
