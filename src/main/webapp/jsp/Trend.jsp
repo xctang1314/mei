@@ -5,15 +5,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" type="text/css"
+<!-- <link rel="stylesheet" type="text/css"
 	href="../jquery-easyui-1.7.0/themes/default/easyui.css" />
 <link rel="stylesheet" type="text/css"
 	href="../jquery-easyui-1.7.0/themes/icon.css" />
-<link rel="stylesheet" type="text/css" href="../css/Trend.css" />
 <script src="../jquery-easyui-1.7.0/jquery.min.js" type="text/javascript"
-	charset="utf-8"></script>
+	charset="utf-8"></script>	
 <script src="../jquery-easyui-1.7.0/jquery.easyui.min.js"
-	type="text/javascript" charset="utf-8"></script>
+	type="text/javascript" charset="utf-8"></script> -->
+	
+<link rel="stylesheet" type="text/css" href="../css/Trend.css" />
+<script src="../d3/d3.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../d3/d3.js" type="text/javascript" charset="utf-8"></script>
+<script src="../jquery-1.8.3.min.js" type="text/javascript"
+	charset="utf-8"></script>
 <script src="../js/Trend.js"
 	type="text/javascript" charset="utf-8"></script>
 <title>Insert title here</title>
@@ -25,6 +30,15 @@
  	<input type="file" name="file" id="pic"/> 
  	<input type="button" value="提交" onclick="upload();"/> 
 </form> 
+
 </div>
+
+
+<div id="img"></div>
+
+
+
+
+
 </body>
 </html>

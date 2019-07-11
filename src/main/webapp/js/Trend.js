@@ -17,13 +17,17 @@ function upload() {
     		   data:formData,
     		   processData:false, 
     		   contentType:false, 
-    		   //dataType:"json",
+    		   dataType:"json",
     		   success:function(req){ 
     			  
-
-    				   alert(req);
-    				   var a=[1,2,3,4,5,7,7,8,9,7,7,10];
-    				   showImg(a);
+    			       var c=new Array(req[0].length);
+    				  // alert(req[0][0]);
+    				   for(var b=0;b<req[0].length;b++){
+    					   c[b]=req[0][b];
+    				   }
+    				   
+    				   console.log(c);
+    				   showImg(c);
                   
  
     		   }, 
@@ -40,7 +44,7 @@ function upload() {
  }
 
 
-function showImg(dataset){
+function showImg(dataset){    //柱状图
 
 	var width = 1500;
 	var height = 400;
@@ -135,3 +139,5 @@ function showImg(dataset){
 	   .attr("transform","translate(" + padding.left + "," + padding.top + ")")
 	   .call(yAxis);
 };
+
+

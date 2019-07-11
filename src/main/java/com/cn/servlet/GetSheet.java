@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.apache.commons.fileupload.FileItem;
@@ -167,14 +169,22 @@ public class GetSheet extends HttpServlet {
 								}
 
 							}
-							for (int k = 0; k < cellNum; k++) {
+							for (int k = 0; k < cellNum; k++) {  //L[k]   linkedlist
 								System.out.println(L[k].toString());
+								Iterator<String> it=L[k].iterator();
+								while(it.hasNext()){
+									int a=Integer.parseInt(it.next()); 
+								}
+								
 							}
 							
 							int a[]= {1,2,3,4,5,6,7,9,0,5,6,7,8};
-							/*JSONObject json = JSONObject.fromObject(a);
-							System.out.println(json);*/
-							response.getWriter().print(a.toString());
+							JSONArray json= new JSONArray();
+							json.add(a);
+							//JSONObject json = JSONObject.fromObject(a);
+							System.out.println(json);
+							//System.out.println("aaaa");
+							response.getWriter().print(json);
 							
 						} else {
 							System.out.println("找不到指定的文件");

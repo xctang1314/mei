@@ -5,6 +5,27 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+        <dependent-module archiveName="ezmorph-1.0.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/E:/桌面文件20190409/Json需要的jar包/ezmorph-1.0.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-httpclient-3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/E:/桌面文件20190409/Json需要的jar包/commons-httpclient-3.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="json-lib-2.4-jdk15.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/E:/桌面文件20190409/Json需要的jar包/json-lib-2.4-jdk15.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-lang-2.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/E:/桌面文件20190409/Json需要的jar包/commons-lang-2.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-collections-3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/E:/桌面文件20190409/Json需要的jar包/commons-collections-3.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-beanutils-1.7.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/E:/桌面文件20190409/Json需要的jar包/commons-beanutils-1.7.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-logging-1.0.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/E:/桌面文件20190409/Json需要的jar包/commons-logging-1.0.4.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="mei"/>
         <property name="java-output-path" value="/mei/target/classes"/>
     </wb-module>
